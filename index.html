@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Calculador electricidad y magnetismo</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/sb-admin.css" rel="stylesheet">
+
+    <!-- Morris Charts CSS -->
+    <link href="css/plugins/morris.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <!-- Brand and toggle get grouped for better mobile display -->
+
+            <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav side-nav">
+                    <li class="active">
+                        <a href="index.html"><i class="fa fa-fw fa-dashboard"></i> Ley de Ohm </a>
+                    </li>
+                    <!--
+                    <li>
+                        <a href="charts.html"><i class="fa fa-fw fa-bar-chart-o"></i> Charts</a>
+                    </li>
+                    <li>
+                        <a href="tables.html"><i class="fa fa-fw fa-table"></i> Tables</a>
+                    </li>
+                    <li>
+                        <a href="forms.html"><i class="fa fa-fw fa-edit"></i> Forms</a>
+                    </li>
+                    <li>
+                        <a href="bootstrap-elements.html"><i class="fa fa-fw fa-desktop"></i> Bootstrap Elements</a>
+                    </li>
+                    <li>
+                        <a href="bootstrap-grid.html"><i class="fa fa-fw fa-wrench"></i> Bootstrap Grid</a>
+                    </li>
+                    <li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Dropdown <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="demo" class="collapse">
+                            <li>
+                                <a href="#">Dropdown Item</a>
+                            </li>
+                            <li>
+                                <a href="#">Dropdown Item</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="blank-page.html"><i class="fa fa-fw fa-file"></i> Blank Page</a>
+                    </li>
+                    <li>
+                        <a href="index-rtl.html"><i class="fa fa-fw fa-dashboard"></i> RTL Dashboard</a>
+                    </li>
+                  -->
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </nav>
+
+        <div id="page-wrapper">
+
+            <div class="container-fluid">
+
+                <!-- Page Heading -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">
+                            Ley de Ohm  <small>Calculador</small>
+                        </h1>
+                        <ol class="breadcrumb">
+                            <li class="active">
+                                <i class="fa fa-dashboard"></i> Calculador de ley de Ohm
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+
+                <h3>
+                  Pon los dos valores con los que cuentes, presiona calcular y
+                  automáticamente te va a salir el tercero
+                </h3>
+
+                <form>
+                  <div class="form-group">
+                    <br>
+                    <label for = "vol">Volts:</label>
+                    <input type="text"  class="form-control" name="volts" id = "vol" placeholder="5.0"  >V
+                    <br>
+                  </div>
+                  <div class="form-group">
+                    <br>
+                    <label for = "amp">Ampers:</label>
+                    <input type="text"  class="form-control" name="ampers" id = "amp" placeholder="10.0" >A
+                    <br><br>
+                  </div>
+                  <div class="form-group">
+                    <label for = "ohm">Ohms:</label>
+                    <input type="text" class="form-control" name="ohms" id = "ohm" placeholder="100.0" >ohms
+                    <br><br>
+                  </div>
+                    <input type="button" class="btn btn-default" value="Calcula!" onclick="calcula()">
+                    <input type="button" class="btn btn-default" value="Borrar" onclick="borraVals()">
+                </form>
+
+                <!-- /.row -->
+<script type="text/javascript">
+'use strict';
+function ohmCalc(volts, ampers) {
+  var ohms = volts / ampers;
+  return ohms;
+}
+
+function voltCalc(ohms, ampers) {
+  var volts = ohms * ampers;
+  return volts;
+}
+
+function ampCalc(volts, ohms) {
+  var ampers = volts / ohms;
+  return ampers;
+}
+
+function calcula() {
+  var vol, amp, ohm, ohms, amps, volts;
+  vol = document.getElementById("vol").value;
+  amp = document.getElementById("amp").value;
+  ohm = document.getElementById("ohm").value;
+
+  if (ohm === "") {
+      ohms = ohmCalc(vol, amp);
+      document.getElementById("ohm").value = ohms;
+  }
+  if (amp === "") {
+      amps = ampCalc(vol, ohm);
+      document.getElementById("amp").value = amps;
+  }
+  if (vol === "") {
+      volts = voltCalc(ohm, amp);
+      document.getElementById("vol").value = volts;
+  }
+
+}
+
+function borraVals() {
+  document.getElementById("vol").value = "";
+  document.getElementById("amp").value = "";
+  document.getElementById("ohm").value = "";
+}
+
+</script>
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Morris Charts JavaScript -->
+    <script src="js/plugins/morris/raphael.min.js"></script>
+    <script src="js/plugins/morris/morris.min.js"></script>
+    <script src="js/plugins/morris/morris-data.js"></script>
+
+</body>
+
+</html>
